@@ -16,9 +16,9 @@ FROM assistance_requests
 JOIN teachers ON teachers.id = teacher_id
 JOIN students ON students.id = student_id
 JOIN cohorts ON cohorts.id = students.cohort_id
-WHERE cohorts.name = '${process.argv[2] || 'JUL02'}'
+WHERE cohorts.name = $1
 ORDER BY teachers.name;
-`)
+`, [`${process.argv[2] || 'JUL02'}`])
   .then(res => {
     // console.log(res.rows)
     res.rows.forEach(user => {
