@@ -1,7 +1,6 @@
 const { Pool } = require('pg');
-const cliArgs = process.argv.slice(2)
 
-console.log(cliArgs)
+
 const pool = new Pool({
   user: 'vagrant',
   password: '123',
@@ -9,6 +8,7 @@ const pool = new Pool({
   database: 'bootcampx'
 });
 
+const cliArgs = process.argv.slice(2)
 
 pool.query(`
 SELECT students.id AS student_id, students.name AS name, cohorts.name AS cohort
